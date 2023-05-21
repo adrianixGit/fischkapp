@@ -1,14 +1,16 @@
-import { StyledHeader } from "./styles/Header.styled";
+import { StyledHeader, StyledLogo } from "./styles/Header.styled";
+import addButton from "../assets/addButton.svg";
+import { StyledAddButton } from "./styles/buttons/AddButton";
 export const Header = () => {
   return (
     <StyledHeader>
-      <div className="header__logo">
-        <h1 className="header__logoName">FLASHCARDS</h1>
-        <p className="header__cardsNumber">0</p>
-      </div>
-      <button>
-        <p></p>
-      </button>
+      <StyledLogo>
+        <h1>FLASHCARDS</h1>
+        <p>0</p>
+      </StyledLogo>
+      <StyledAddButton>
+        <img src={addButton} alt="button" />
+      </StyledAddButton>
     </StyledHeader>
   );
 };
