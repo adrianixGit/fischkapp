@@ -1,4 +1,4 @@
-import { StyledCard } from "./styles/Card.styled";
+import { StyledFrontCard } from "./styles/Card.styled";
 import { StyledInput } from "./styles/Card.styled";
 import { StyledCardButton } from "./styles/buttons/CardButton";
 import { StyledButtonsContainer } from "./styles/Card.styled";
@@ -10,7 +10,7 @@ type FrontCardProps = {
 
 export const FrontCard = ({ getCardStatus, cardStatus }: FrontCardProps) => {
   return (
-    <StyledCard cardStatus={cardStatus}>
+    <StyledFrontCard cardStatus={cardStatus}>
       <StyledInput type="text" placeholder="Type word.." />
       <StyledButtonsContainer>
         <StyledCardButton>Cancel</StyledCardButton>
@@ -18,6 +18,6 @@ export const FrontCard = ({ getCardStatus, cardStatus }: FrontCardProps) => {
           Next
         </StyledCardButton>
       </StyledButtonsContainer>
-    </StyledCard>
+    </StyledFrontCard>
   );
 };

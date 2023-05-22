@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 interface CardPropsType {
-  cardStatus: boolean;
+  cardStatus?: boolean;
 }
 
-export const StyledCard = styled.div<CardPropsType>`
+export const StyledFrontCard = styled.div<CardPropsType>`
   margin: 9vh auto auto auto;
   display: ${({ cardStatus }) => (cardStatus ? "block" : "none")};
   width: 95vw;

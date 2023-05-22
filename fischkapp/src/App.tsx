@@ -5,6 +5,7 @@ import { Wrapper } from "./components/styles/Wrapper";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/styles/GlobalStyles";
 import { FrontCard } from "./components/FrontCard";
+import { BackCard } from "./components/BackCard";
 import { useState } from "react";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
       <Wrapper>
         <Header />
         <FrontCard getCardStatus={getCardStatus} cardStatus={cardStatus} />
-        <Header />
+        <BackCard getCardStatus={getCardStatus} cardStatus={cardStatus} />
       </Wrapper>
     </ThemeProvider>
   );
