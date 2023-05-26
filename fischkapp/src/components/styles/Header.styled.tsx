@@ -5,10 +5,11 @@ export const StyledHeader = styled.div`
   height: 7vh;
   position: fixed;
   padding: 2.5vh;
-  box-shadow: 0px -16px 52px -10px rgba(152, 163, 207, 1);
+  box-shadow: 0px 0px 34px rgba(152, 163, 207, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const StyledLogo = styled.div`
