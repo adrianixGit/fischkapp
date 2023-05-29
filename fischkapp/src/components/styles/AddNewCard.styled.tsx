@@ -1,14 +1,4 @@
-import styled from "styled-components";
-
-export const CardsWrapper = styled.div`
-  display: block;
-  width: 95vw;
-  min-height: 20vh;
-  background-color: ${({ theme }) => theme.colors.white};
-  border-radius: 16px;
-  padding: 10px;
-  box-shadow: 0px 20px 34px rgba(152, 163, 207, 0.3);
-`;
+import styled, { keyframes } from "styled-components";
 
 export const StyledInput = styled.input`
   margin-top: 7vh;

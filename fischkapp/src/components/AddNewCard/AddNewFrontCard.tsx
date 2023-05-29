@@ -1,15 +1,16 @@
-import { CardsWrapper } from "../styles/SitesCards.styled";
-import { StyledInput } from "../styles/SitesCards.styled";
+// import { CardWrapper } from "../styles/SitesCards.styled";
+import { StyledInput } from "../styles/AddNewCard.styled";
 import { StyledCardButton } from "../styles/buttons/CardButton";
-import { StyledButtonsContainer } from "../styles/SitesCards.styled";
+import { StyledCardContent } from "../styles/CardGlobal.styled";
+import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
 
 type FrontCardProps = {
   onFlipCard: Function;
 };
 
-export const FrontCard = ({ onFlipCard }: FrontCardProps) => {
+export const AddNewFrontCard = ({ onFlipCard }: FrontCardProps) => {
   return (
-    <CardsWrapper>
+    <StyledCardContent>
       <StyledInput type="text" placeholder="Type word.." />
       <StyledButtonsContainer>
         <StyledCardButton>Cancel</StyledCardButton>
@@ -17,6 +18,6 @@ export const FrontCard = ({ onFlipCard }: FrontCardProps) => {
           Next
         </StyledCardButton>
       </StyledButtonsContainer>
-    </CardsWrapper>
+    </StyledCardContent>
   );
 };
