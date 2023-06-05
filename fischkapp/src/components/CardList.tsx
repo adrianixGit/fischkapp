@@ -4,9 +4,15 @@ import { StyledCardList } from "./styles/CardList.styled";
 import { FrontCard } from "./CreatedCard.tsx/FrontCard";
 import { CreatedCard } from "./CreatedCrad";
 
-export const CardList = () => {
+type CardListPropTypes = {
+  onIsNewCard: boolean;
+  onSetNewCard: Function;
+};
+
+export const CardList = ({ onIsNewCard, onSetNewCard }: CardListPropTypes) => {
   return (
     <StyledCardList>
+      {onIsNewCard ? <AddNewCard onSetNewCard={onSetNewCard} /> : null}
       {flashCardsData.map((flashCard) => (
         <CreatedCard
           frontText={flashCard.frontText}

@@ -6,14 +6,20 @@ import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
 
 type FrontCardProps = {
   onFlipCard: Function;
+  onSetNewCard: Function;
 };
 
-export const AddNewFrontCard = ({ onFlipCard }: FrontCardProps) => {
+export const AddNewFrontCard = ({
+  onFlipCard,
+  onSetNewCard,
+}: FrontCardProps) => {
   return (
     <StyledCardContent>
       <StyledInput type="text" placeholder="Type word.." />
       <StyledButtonsContainer>
-        <StyledCardButton>Cancel</StyledCardButton>
+        <StyledCardButton onClick={() => onSetNewCard(false)}>
+          Cancel
+        </StyledCardButton>
         <StyledCardButton bg="violet" onClick={() => onFlipCard()}>
           Next
         </StyledCardButton>

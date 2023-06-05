@@ -8,12 +8,14 @@ import { CardList } from "./components/CardList";
 import { useState } from "react";
 
 function App() {
+  const [isNewCard, setNewCard] = useState(false);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Wrapper>
-        <Header />
-        <CardList />
+        <Header onSetNewCard={setNewCard} />
+        <CardList onIsNewCard={isNewCard} onSetNewCard={setNewCard} />
       </Wrapper>
     </ThemeProvider>
   );
