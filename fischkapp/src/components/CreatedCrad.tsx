@@ -13,17 +13,20 @@ type CreatedCardPropType = {
 
 export const CreatedCard = ({ frontText, backText }: CreatedCardPropType) => {
   const [flipCard, setFlipCard] = useState(true);
-  const [isAnimate, setIsAnimate] = useState(true);
+  const [isAnimate, setIsAnimate] = useState(false);
   const [edit, setEdit] = useState(false);
   const [cardText, setCardText] = useState("");
 
-  useEffect(() => {
+  const handleAnimateCard = () => {
     setIsAnimate(!isAnimate);
-  }, [flipCard]);
+
+    setTimeout(() => {
+      setIsAnimate(false);
+    }, 2000);
+  };
 
   const handleFlipCard = () => {
     setFlipCard(!flipCard);
-    setIsAnimate(false);
   };
 
   const handleEditCard = (text: string) => {
@@ -38,14 +41,14 @@ export const CreatedCard = ({ frontText, backText }: CreatedCardPropType) => {
       ) : flipCard ? (
         <FrontCard
           frontText={frontText}
-          // onFlipCard={handleFlipCard}
           onEdit={handleEditCard}
+          onIsAnimate={handleAnimateCard}
         />
       ) : (
         <BackCard
           backText={backText}
-          // onFlipCard={handleFlipCard}
           onEdit={handleEditCard}
+          onIsAnimate={handleAnimateCard}
         />
       )}
     </StyledCard>

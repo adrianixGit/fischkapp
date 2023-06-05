@@ -7,21 +7,21 @@ import editIcon from "../../assets/edit.svg";
 
 type FrontCardPropTypes = {
   backText: string;
-  //   onFlipCard: Function;
   onEdit: Function;
+  onIsAnimate: Function;
 };
 
 export const BackCard = ({
   backText,
-  //   onFlipCard,
   onEdit,
+  onIsAnimate,
 }: FrontCardPropTypes) => {
   return (
     <StyledCardContent>
       <StyledIcon>
         <img src={editIcon} alt="editIcon" onClick={() => onEdit(backText)} />
       </StyledIcon>
-      <StyledTextContainer>
+      <StyledTextContainer onClick={() => onIsAnimate()}>
         <p>{backText}</p>
       </StyledTextContainer>
     </StyledCardContent>
