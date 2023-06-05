@@ -1,8 +1,8 @@
-import { CardsWrapper } from "../styles/SitesCards.styled";
-import { StyledInput } from "../styles/SitesCards.styled";
+import { StyledCardContent } from "../styles/CardGlobal.styled";
+import { StyledInput } from "../styles/AddNewCard.styled";
 import { StyledCardButton } from "../styles/buttons/CardButton";
-import { StyledButtonsContainer } from "../styles/SitesCards.styled";
-import { StyledControlCardPanel } from "../styles/SitesCards.styled";
+import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
+import { StyledControlCardPanel } from "../styles/AddNewCard.styled";
 import { StyledDeleteButton } from "../styles/buttons/DeleteButton";
 import deleteIcon from "../../assets/deleteIcon.svg";
 
@@ -10,9 +10,9 @@ type BackCardProps = {
   onFlipCard: Function;
 };
 
-export const BackCard = ({ onFlipCard }: BackCardProps) => {
+export const AddNewBackCard = ({ onFlipCard }: BackCardProps) => {
   return (
-    <CardsWrapper>
+    <StyledCardContent>
       <StyledControlCardPanel>
         <p>Text from input</p>
         <StyledDeleteButton>
@@ -24,6 +24,6 @@ export const BackCard = ({ onFlipCard }: BackCardProps) => {
         <StyledCardButton onClick={() => onFlipCard()}>Back</StyledCardButton>
         <StyledCardButton bg="violet">Save</StyledCardButton>
       </StyledButtonsContainer>
-    </CardsWrapper>
+    </StyledCardContent>
   );
 };
