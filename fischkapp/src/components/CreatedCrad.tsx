@@ -7,8 +7,8 @@ import { EditCard } from "./CreatedCard.tsx/EditCard";
 import { useEffect } from "react";
 
 type CreatedCardPropType = {
-  frontText: string;
-  backText: string;
+  frontText: String;
+  backText: String;
 };
 
 export const CreatedCard = ({ frontText, backText }: CreatedCardPropType) => {

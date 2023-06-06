@@ -6,7 +6,7 @@ import { StyledIcon } from "../styles/CardGlobal.styled";
 import editIcon from "../../assets/edit.svg";
 
 type FrontCardPropTypes = {
-  backText: string;
+  backText: String;
   onEdit: Function;
   onIsAnimate: Function;
 };

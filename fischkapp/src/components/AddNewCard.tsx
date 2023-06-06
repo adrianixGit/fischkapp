@@ -9,6 +9,7 @@ type AddNewCardPropType = {
 
 export const AddNewCard = ({ onSetNewCard }: AddNewCardPropType) => {
   const [isFront, setIsFront] = useState<boolean>(true);
+  const [forntText, setFrontText] = useState("Front Text");
 
   const handleFlipCard = () => {
     setIsFront(!isFront);
@@ -20,9 +21,10 @@ export const AddNewCard = ({ onSetNewCard }: AddNewCardPropType) => {
         <AddNewFrontCard
           onFlipCard={handleFlipCard}
           onSetNewCard={onSetNewCard}
+          onSetFrontText={setFrontText}
         />
       ) : (
-        <AddNewBackCard onFlipCard={handleFlipCard} />
+        <AddNewBackCard onFlipCard={handleFlipCard} frontText={forntText} />
       )}
     </StyledCard>
   );

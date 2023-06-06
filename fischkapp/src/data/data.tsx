@@ -14,4 +14,9 @@ export const flashCardsData = [
     frontText: "Polska",
     backText: "Hiszpania",
   },
+  {
+    id: 3,
+    frontText: "Polska",
+    backText: "Hiszpania",
+  },
 ];

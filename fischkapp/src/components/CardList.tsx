@@ -3,11 +3,18 @@ import { AddNewCard } from "./AddNewCard";
 import { StyledCardList } from "./styles/CardList.styled";
 import { FrontCard } from "./CreatedCard.tsx/FrontCard";
 import { CreatedCard } from "./CreatedCrad";
+import { useState, useEffect } from "react";
 
 type CardListPropTypes = {
   onIsNewCard: boolean;
   onSetNewCard: Function;
 };
+
+interface FlashCardType {
+  id?: number;
+  frontText: String;
+  backText: String;
+}
 
 export const CardList = ({ onIsNewCard, onSetNewCard }: CardListPropTypes) => {
   return (
@@ -22,5 +29,3 @@ export const CardList = ({ onIsNewCard, onSetNewCard }: CardListPropTypes) => {
     </StyledCardList>
   );
 };
-
-//Musze stworzyc nowy plik ktory bedzie bardzo podobny do AddNewCard tylko ze ten bedzie dzialal na stworzonej juz karcie i bedzie pokazywal przod albo tyl,  stworzonej juz karty

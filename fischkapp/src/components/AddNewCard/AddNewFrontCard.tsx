@@ -7,15 +7,21 @@ import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
 type FrontCardProps = {
   onFlipCard: Function;
   onSetNewCard: Function;
+  onSetFrontText: Function;
 };
 
 export const AddNewFrontCard = ({
   onFlipCard,
   onSetNewCard,
+  onSetFrontText,
 }: FrontCardProps) => {
   return (
     <StyledCardContent>
-      <StyledInput type="text" placeholder="Type word.." />
+      <StyledInput
+        type="text"
+        placeholder="Type word.."
+        onChange={(e) => onSetFrontText(e.target.value)}
+      />
       <StyledButtonsContainer>
         <StyledCardButton onClick={() => onSetNewCard(false)}>
           Cancel

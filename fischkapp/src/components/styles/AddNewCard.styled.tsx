@@ -23,6 +23,8 @@ export const StyledControlCardPanel = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  top: 0;
 
   p {
     color: ${({ theme }) => theme.colors.bluegray};

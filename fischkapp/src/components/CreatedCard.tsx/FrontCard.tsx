@@ -7,7 +7,7 @@ import {
 import editIcon from "../../assets/edit.svg";
 
 type FrontCardPropTypes = {
-  frontText: string;
+  frontText: String;
   onEdit: Function;
   onIsAnimate: Function;
 };
