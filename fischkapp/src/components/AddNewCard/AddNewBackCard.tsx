@@ -1,4 +1,3 @@
-import { flashCardsData } from "../../data/data";
 import { StyledCardContent } from "../styles/CardGlobal.styled";
 import { StyledInput } from "../styles/AddNewCard.styled";
 import { StyledCardButton } from "../styles/buttons/CardButton";
@@ -11,6 +10,9 @@ import { useState } from "react";
 type BackCardProps = {
   onFlipCard: Function;
   frontText: String;
+  onFlashCards: FlashCardType[];
+  onSetFlashCards: Function;
+  onSetNewCard: Function;
 };
 
 interface FlashCardType {
@@ -19,9 +21,14 @@ interface FlashCardType {
   backText: String;
 }
 
-export const AddNewBackCard = ({ onFlipCard, frontText }: BackCardProps) => {
+export const AddNewBackCard = ({
+  onFlipCard,
+  frontText,
+  onFlashCards,
+  onSetFlashCards,
+  onSetNewCard,
+}: BackCardProps) => {
   const [backText, setBackText] = useState("");
-  const [flashCards, setFlashCards] = useState<FlashCardType[]>(flashCardsData);
 
   const addNewFlashCard = (frontText: String, backText: String) => {
     const newFlashCard: FlashCardType = {
@@ -30,10 +37,8 @@ export const AddNewBackCard = ({ onFlipCard, frontText }: BackCardProps) => {
       backText: backText,
     };
 
-    setFlashCards([...flashCards, newFlashCard]);
-    console.log(frontText, backText);
-
-    console.log(flashCards);
+    onSetFlashCards([...onFlashCards, newFlashCard]);
+    onSetNewCard(false);
   };
 
   return (
