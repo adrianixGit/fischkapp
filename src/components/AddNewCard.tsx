@@ -2,17 +2,12 @@ import { StyledCard } from "./styles/CardGlobal.styled";
 import { AddNewFrontCard } from "./AddNewCard/AddNewFrontCard";
 import { AddNewBackCard } from "./AddNewCard/AddNewBackCard";
 import { useState } from "react";
-
-interface FlashCardType {
-  id?: number;
-  frontText: string;
-  backText: string;
-}
+import { FlashCardType } from "../App";
 
 type AddNewCardPropType = {
   onSetNewCard: (isSettingCard: boolean) => void;
   flashCards: FlashCardType[];
-  onSetFlashCards: (isGetingObject: FlashCardType[]) => void;
+  onSetFlashCards: (flashcards: FlashCardType[]) => void;
 };
 
 export const AddNewCard = ({
@@ -21,7 +16,7 @@ export const AddNewCard = ({
   onSetFlashCards,
 }: AddNewCardPropType) => {
   const [isFront, setIsFront] = useState<boolean>(true);
-  const [forntText, setFrontText] = useState("Front Text");
+  const [frontText, setFrontText] = useState("Front Text");
 
   const handleFlipCard = () => {
     setIsFront(!isFront);
@@ -38,7 +33,7 @@ export const AddNewCard = ({
       ) : (
         <AddNewBackCard
           onFlipCard={handleFlipCard}
-          frontText={forntText}
+          frontText={frontText}
           flashCards={flashCards}
           onSetFlashCards={onSetFlashCards}
           onSetNewCard={onSetNewCard}

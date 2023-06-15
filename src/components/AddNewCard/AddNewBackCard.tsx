@@ -6,6 +6,7 @@ import { StyledControlCardPanel } from "../styles/AddNewCard.styled";
 import { StyledDeleteButton } from "../styles/buttons/DeleteButton";
 import deleteIcon from "../../assets/deleteIcon.svg";
 import { useState } from "react";
+import { FlashCardType } from "../../App";
 
 type BackCardProps = {
   onFlipCard: () => void;
@@ -14,12 +15,6 @@ type BackCardProps = {
   onSetFlashCards: (isGetingObject: FlashCardType[]) => void;
   onSetNewCard: (isSettingCard: boolean) => void;
 };
-
-interface FlashCardType {
-  id?: number;
-  frontText: string;
-  backText: string;
-}
 
 export const AddNewBackCard = ({
   onFlipCard,
