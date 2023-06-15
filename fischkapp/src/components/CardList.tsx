@@ -6,36 +6,37 @@ import { useState, useEffect } from "react";
 
 interface FlashCardType {
   id?: number;
-  frontText: String;
-  backText: String;
+  frontText: string;
+  backText: string;
 }
 
 type CardListPropTypes = {
-  onIsNewCard: boolean;
-  onSetNewCard: Function;
-  onFlashCards: FlashCardType[];
-  onSetFlashCards: Function;
+  isNewCard: boolean;
+  onSetNewCard: (isSettingCard: boolean) => void;
+  flashCards: FlashCardType[];
+  onSetFlashCards: (isGetingObject: FlashCardType[]) => void;
 };
 
 export const CardList = ({
-  onIsNewCard,
+  isNewCard,
   onSetNewCard,
-  onFlashCards,
+  flashCards,
   onSetFlashCards,
 }: CardListPropTypes) => {
   return (
     <StyledCardList>
-      {onIsNewCard ? (
+      {isNewCard ? (
         <AddNewCard
           onSetNewCard={onSetNewCard}
-          onFlashCards={onFlashCards}
+          flashCards={flashCards}
           onSetFlashCards={onSetFlashCards}
         />
       ) : null}
-      {onFlashCards.map((flashCard) => (
+      {flashCards.map((flashCard, index) => (
         <CreatedCard
           frontText={flashCard.frontText}
           backText={flashCard.backText}
+          index={index}
         />
       ))}
     </StyledCardList>

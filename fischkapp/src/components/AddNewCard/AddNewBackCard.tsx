@@ -8,36 +8,36 @@ import deleteIcon from "../../assets/deleteIcon.svg";
 import { useState } from "react";
 
 type BackCardProps = {
-  onFlipCard: Function;
-  frontText: String;
-  onFlashCards: FlashCardType[];
-  onSetFlashCards: Function;
-  onSetNewCard: Function;
+  onFlipCard: () => void;
+  frontText: string;
+  flashCards: FlashCardType[];
+  onSetFlashCards: (isGetingObject: FlashCardType[]) => void;
+  onSetNewCard: (isSettingCard: boolean) => void;
 };
 
 interface FlashCardType {
   id?: number;
-  frontText: String;
-  backText: String;
+  frontText: string;
+  backText: string;
 }
 
 export const AddNewBackCard = ({
   onFlipCard,
   frontText,
-  onFlashCards,
+  flashCards,
   onSetFlashCards,
   onSetNewCard,
 }: BackCardProps) => {
   const [backText, setBackText] = useState("");
 
-  const addNewFlashCard = (frontText: String, backText: String) => {
+  const addNewFlashCard = (frontText: string, backText: string) => {
     const newFlashCard: FlashCardType = {
       id: 1,
       frontText: frontText,
       backText: backText,
     };
 
-    onSetFlashCards([...onFlashCards, newFlashCard]);
+    onSetFlashCards([...flashCards, newFlashCard]);
     onSetNewCard(false);
   };
 

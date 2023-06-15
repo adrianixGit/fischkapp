@@ -7,15 +7,22 @@ import { EditCard } from "./CreatedCard.tsx/EditCard";
 import { useEffect } from "react";
 
 type CreatedCardPropType = {
-  frontText: String;
-  backText: String;
+  frontText: string;
+  backText: string;
+  index: number;
 };
 
-export const CreatedCard = ({ frontText, backText }: CreatedCardPropType) => {
+export const CreatedCard = ({
+  frontText,
+  backText,
+  index,
+}: CreatedCardPropType) => {
   const [flipCard, setFlipCard] = useState(true);
   const [isAnimate, setIsAnimate] = useState(false);
   const [edit, setEdit] = useState(false);
   const [cardText, setCardText] = useState("");
+
+  console.log(index);
 
   const handleAnimateCard = () => {
     setIsAnimate(!isAnimate);

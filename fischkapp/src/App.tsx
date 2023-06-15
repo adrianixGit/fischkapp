@@ -5,13 +5,13 @@ import { Wrapper } from "./components/styles/Wrapper";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/styles/GlobalStyles";
 import { CardList } from "./components/CardList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { flashCardsData } from "./data/data";
 
 interface FlashCardType {
   id?: number;
-  frontText: String;
-  backText: String;
+  frontText: string;
+  backText: string;
 }
 
 function App() {
@@ -27,9 +27,9 @@ function App() {
           onFlashCardsNumber={flashCards.length}
         />
         <CardList
-          onIsNewCard={isNewCard}
+          isNewCard={isNewCard}
           onSetNewCard={setNewCard}
-          onFlashCards={flashCards}
+          flashCards={flashCards}
           onSetFlashCards={setFlashCards}
         />
       </Wrapper>

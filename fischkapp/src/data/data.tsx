@@ -1,7 +1,7 @@
 export const flashCardsData = [
   {
     id: 1,
-    frontText: "Polska",
+    frontText: "Zupa",
     backText: "Hiszpania",
   },
   {
@@ -16,7 +16,7 @@ export const flashCardsData = [
   },
   {
     id: 3,
-    frontText: "Polska",
+    frontText: "Test",
     backText: "Hiszpania",
   },
 ];

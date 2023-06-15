@@ -3,7 +3,7 @@ import addButton from "../assets/addButton.svg";
 import { StyledAddButton } from "./styles/buttons/AddButton";
 
 type HeaderPropTypes = {
-  onSetNewCard: Function;
+  onSetNewCard: (isSettingCard: boolean) => void;
   onFlashCardsNumber: number;
 };
 

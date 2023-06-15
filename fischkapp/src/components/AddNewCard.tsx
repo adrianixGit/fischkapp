@@ -5,19 +5,19 @@ import { useState } from "react";
 
 interface FlashCardType {
   id?: number;
-  frontText: String;
-  backText: String;
+  frontText: string;
+  backText: string;
 }
 
 type AddNewCardPropType = {
-  onSetNewCard: Function;
-  onFlashCards: FlashCardType[];
-  onSetFlashCards: Function;
+  onSetNewCard: (isSettingCard: boolean) => void;
+  flashCards: FlashCardType[];
+  onSetFlashCards: (isGetingObject: FlashCardType[]) => void;
 };
 
 export const AddNewCard = ({
   onSetNewCard,
-  onFlashCards,
+  flashCards,
   onSetFlashCards,
 }: AddNewCardPropType) => {
   const [isFront, setIsFront] = useState<boolean>(true);
@@ -39,7 +39,7 @@ export const AddNewCard = ({
         <AddNewBackCard
           onFlipCard={handleFlipCard}
           frontText={forntText}
-          onFlashCards={onFlashCards}
+          flashCards={flashCards}
           onSetFlashCards={onSetFlashCards}
           onSetNewCard={onSetNewCard}
         />

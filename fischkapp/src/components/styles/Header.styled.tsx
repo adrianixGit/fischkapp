@@ -10,6 +10,7 @@ export const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.white};
+  z-index: 999;
 `;
 
 export const StyledLogo = styled.div`

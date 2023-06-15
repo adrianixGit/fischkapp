@@ -7,9 +7,9 @@ import {
 import editIcon from "../../assets/edit.svg";
 
 type FrontCardPropTypes = {
-  frontText: String;
-  onEdit: Function;
-  onIsAnimate: Function;
+  frontText: string;
+  onEdit: (text: string) => void;
+  onIsAnimate: () => void;
 };
 
 export const FrontCard = ({

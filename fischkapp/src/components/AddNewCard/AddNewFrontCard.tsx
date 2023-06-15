@@ -5,9 +5,9 @@ import { StyledCardContent } from "../styles/CardGlobal.styled";
 import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
 
 type FrontCardProps = {
-  onFlipCard: Function;
-  onSetNewCard: Function;
-  onSetFrontText: Function;
+  onFlipCard: () => void;
+  onSetNewCard: (isSettingCard: boolean) => void;
+  onSetFrontText: (frontText: string) => void;
 };
 
 export const AddNewFrontCard = ({

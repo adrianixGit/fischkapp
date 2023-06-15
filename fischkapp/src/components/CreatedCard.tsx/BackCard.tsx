@@ -6,9 +6,9 @@ import { StyledIcon } from "../styles/CardGlobal.styled";
 import editIcon from "../../assets/edit.svg";
 
 type FrontCardPropTypes = {
-  backText: String;
-  onEdit: Function;
-  onIsAnimate: Function;
+  backText: string;
+  onEdit: (text: string) => void;
+  onIsAnimate: () => void;
 };
 
 export const BackCard = ({
