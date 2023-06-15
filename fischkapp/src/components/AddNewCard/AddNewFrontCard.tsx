@@ -5,15 +5,27 @@ import { StyledCardContent } from "../styles/CardGlobal.styled";
 import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
 
 type FrontCardProps = {
-  onFlipCard: Function;
+  onFlipCard: () => void;
+  onSetNewCard: (isSettingCard: boolean) => void;
+  onSetFrontText: (frontText: string) => void;
 };
 
-export const AddNewFrontCard = ({ onFlipCard }: FrontCardProps) => {
+export const AddNewFrontCard = ({
+  onFlipCard,
+  onSetNewCard,
+  onSetFrontText,
+}: FrontCardProps) => {
   return (
     <StyledCardContent>
-      <StyledInput type="text" placeholder="Type word.." />
+      <StyledInput
+        type="text"
+        placeholder="Type word.."
+        onChange={(e) => onSetFrontText(e.target.value)}
+      />
       <StyledButtonsContainer>
-        <StyledCardButton>Cancel</StyledCardButton>
+        <StyledCardButton onClick={() => onSetNewCard(false)}>
+          Cancel
+        </StyledCardButton>
         <StyledCardButton bg="violet" onClick={() => onFlipCard()}>
           Next
         </StyledCardButton>

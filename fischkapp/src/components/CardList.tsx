@@ -1,20 +1,44 @@
 import { flashCardsData } from "../data/data";
 import { AddNewCard } from "./AddNewCard";
 import { StyledCardList } from "./styles/CardList.styled";
-import { FrontCard } from "./CreatedCard.tsx/FrontCard";
 import { CreatedCard } from "./CreatedCrad";
+import { useState, useEffect } from "react";
 
-export const CardList = () => {
+interface FlashCardType {
+  id?: number;
+  frontText: string;
+  backText: string;
+}
+
+type CardListPropTypes = {
+  isNewCard: boolean;
+  onSetNewCard: (isSettingCard: boolean) => void;
+  flashCards: FlashCardType[];
+  onSetFlashCards: (isGetingObject: FlashCardType[]) => void;
+};
+
+export const CardList = ({
+  isNewCard,
+  onSetNewCard,
+  flashCards,
+  onSetFlashCards,
+}: CardListPropTypes) => {
   return (
     <StyledCardList>
-      {flashCardsData.map((flashCard) => (
+      {isNewCard ? (
+        <AddNewCard
+          onSetNewCard={onSetNewCard}
+          flashCards={flashCards}
+          onSetFlashCards={onSetFlashCards}
+        />
+      ) : null}
+      {flashCards.map((flashCard, index) => (
         <CreatedCard
           frontText={flashCard.frontText}
           backText={flashCard.backText}
+          index={index}
         />
       ))}
     </StyledCardList>
   );
 };
-
-//Musze stworzyc nowy plik ktory bedzie bardzo podobny do AddNewCard tylko ze ten bedzie dzialal na stworzonej juz karcie i bedzie pokazywal przod albo tyl,  stworzonej juz karty
