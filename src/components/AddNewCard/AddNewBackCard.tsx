@@ -27,7 +27,7 @@ export const AddNewBackCard = ({
 
   const addNewFlashCard = (frontText: string, backText: string) => {
     const newFlashCard: FlashCardType = {
-      id: 1,
+      id: Date.now(),
       frontText: frontText,
       backText: backText,
     };
