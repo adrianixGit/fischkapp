@@ -6,12 +6,18 @@ import deleteIcon from "../../assets/deleteIcon.svg";
 import { useState } from "react";
 
 type EditCardPropType = {
-  onEdit: Function;
+  onEdit: (text: string) => void;
+  onCancel: () => void;
   cardText: string;
 };
 
-export const EditCard = ({ onEdit, cardText }: EditCardPropType) => {
-  const [newCardText, setNewCardText] = useState("");
+export const EditCard = ({ onEdit, cardText, onCancel }: EditCardPropType) => {
+  const [editedCardText, setNewCardText] = useState(cardText);
+
+  const handleCancel = () => {
+    setNewCardText(cardText);
+    onCancel();
+  };
 
   return (
     <StyledCardContent>
@@ -20,12 +26,15 @@ export const EditCard = ({ onEdit, cardText }: EditCardPropType) => {
       </StyledIcon>
       <StyledInput
         type="text"
-        placeholder={cardText}
+        value={editedCardText}
+        placeholder={"Add value"}
         onChange={(e) => setNewCardText(e.target.value)}
       />
       <StyledButtonsContainer>
-        <StyledCardButton onClick={() => onEdit()}>Cancel</StyledCardButton>
-        <StyledCardButton bg="violet">Save</StyledCardButton>
+        <StyledCardButton onClick={handleCancel}>Cancel</StyledCardButton>
+        <StyledCardButton onClick={() => onEdit(editedCardText)} bg="violet">
+          Save
+        </StyledCardButton>
       </StyledButtonsContainer>
     </StyledCardContent>
   );
