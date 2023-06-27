@@ -4,7 +4,7 @@ import { AddNewBackCard } from "./AddNewCard/AddNewBackCard";
 import { useState } from "react";
 
 interface FlashCardType {
-  id?: number;
+  id: number;
   frontText: string;
   backText: string;
 }

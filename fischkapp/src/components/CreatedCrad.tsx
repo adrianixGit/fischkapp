@@ -9,20 +9,22 @@ import { useEffect } from "react";
 type CreatedCardPropType = {
   frontText: string;
   backText: string;
-  index: number;
+  onChangeCardValue: (id: number, text: string, cardSide: string) => void;
+  id: number;
 };
 
 export const CreatedCard = ({
   frontText,
   backText,
-  index,
+  onChangeCardValue,
+  id,
 }: CreatedCardPropType) => {
   const [flipCard, setFlipCard] = useState(true);
   const [isAnimate, setIsAnimate] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [cardText, setCardText] = useState("");
-
-  console.log(index);
+  const [cardTextToEdit, setCardTextToEdit] = useState("");
+  const [editedSide, setEditedSide] = useState("");
+  const [isSaved, setIsSaved] = useState(false);
 
   const handleAnimateCard = () => {
     setIsAnimate(!isAnimate);
@@ -36,25 +38,36 @@ export const CreatedCard = ({
     setFlipCard(!flipCard);
   };
 
-  const handleEditCard = (text: string) => {
+  const handleSwitchModeEditCard = (text: string, editedSide: string) => {
     setEdit(!edit);
-    setCardText(text);
+    setCardTextToEdit(text);
+    setEditedSide(editedSide);
+  };
+
+  const handleCancelCard = () => {
+    setEdit(false);
   };
 
   return (
     <StyledCard onClick={() => handleFlipCard()} isAnimate={isAnimate}>
       {edit ? (
-        <EditCard onEdit={handleEditCard} cardText={cardText} />
+        <EditCard
+          onCancelEditCard={handleCancelCard}
+          cardTextToEdit={cardTextToEdit}
+          editedSide={editedSide}
+          onChangeCardValue={onChangeCardValue}
+          id={id}
+        />
       ) : flipCard ? (
         <FrontCard
           frontText={frontText}
-          onEdit={handleEditCard}
+          onSwitchModeEditCard={handleSwitchModeEditCard}
           onIsAnimate={handleAnimateCard}
         />
       ) : (
         <BackCard
           backText={backText}
-          onEdit={handleEditCard}
+          onSwitchModeEditCard={handleSwitchModeEditCard}
           onIsAnimate={handleAnimateCard}
         />
       )}
