@@ -6,12 +6,26 @@ import deleteIcon from "../../assets/deleteIcon.svg";
 import { useState } from "react";
 
 type EditCardPropType = {
-  onEdit: Function;
-  cardText: string;
+  cardTextToEdit: string;
+  onCancelEditCard: () => void;
+  editedSide: string;
+  onChangeCardValue: (id: number, text: string, cardSide: string) => void;
+  id: number;
 };
 
-export const EditCard = ({ onEdit, cardText }: EditCardPropType) => {
-  const [newCardText, setNewCardText] = useState("");
+export const EditCard = ({
+  cardTextToEdit,
+  onCancelEditCard,
+  editedSide,
+  onChangeCardValue,
+  id,
+}: EditCardPropType) => {
+  const [editedText, setEditedText] = useState(cardTextToEdit);
+
+  const handleSaveEditedCard = () => {
+    onChangeCardValue(id, editedText, editedSide);
+    onCancelEditCard();
+  };
 
   return (
     <StyledCardContent>
@@ -20,12 +34,16 @@ export const EditCard = ({ onEdit, cardText }: EditCardPropType) => {
       </StyledIcon>
       <StyledInput
         type="text"
-        placeholder={cardText}
-        onChange={(e) => setNewCardText(e.target.value)}
+        value={editedText}
+        onChange={(e) => setEditedText(e.target.value)}
       />
       <StyledButtonsContainer>
-        <StyledCardButton onClick={() => onEdit()}>Cancel</StyledCardButton>
-        <StyledCardButton bg="violet">Save</StyledCardButton>
+        <StyledCardButton onClick={() => onCancelEditCard()}>
+          Cancel
+        </StyledCardButton>
+        <StyledCardButton bg="violet" onClick={(e) => handleSaveEditedCard()}>
+          Save
+        </StyledCardButton>
       </StyledButtonsContainer>
     </StyledCardContent>
   );
