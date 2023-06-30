@@ -9,6 +9,7 @@ import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/styles/GlobalStyles";
 import { useState, useEffect } from "react";
 import { flashCardsData } from "./data/data";
+import { isDoStatement } from "typescript";
 
 interface FlashCardType {
   id: number;
@@ -34,6 +35,16 @@ function App() {
     setFlashCards(ubdateCard);
   };
 
+  const handleDeleteCard = (id: number) => {
+    const cardIndex = flashCards.findIndex((card) => card.id === id);
+    flashCards.splice(cardIndex, 1);
+    setFlashCards([...flashCards]);
+
+    setTimeout(() => {
+      alert("Card has been removed");
+    }, 100);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -56,6 +67,7 @@ function App() {
               backText={flashCard.backText}
               id={flashCard.id}
               onChangeCardValue={handleChangeCardValue}
+              onHandleDeleteCard={handleDeleteCard}
             />
           ))}
         </StyledCardList>

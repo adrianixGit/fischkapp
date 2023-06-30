@@ -11,6 +11,7 @@ type EditCardPropType = {
   editedSide: string;
   onChangeCardValue: (id: number, text: string, cardSide: string) => void;
   id: number;
+  onHandleDeleteCard: (id: number) => void;
 };
 
 export const EditCard = ({
@@ -19,6 +20,7 @@ export const EditCard = ({
   editedSide,
   onChangeCardValue,
   id,
+  onHandleDeleteCard,
 }: EditCardPropType) => {
   const [editedText, setEditedText] = useState(cardTextToEdit);
 
@@ -27,10 +29,19 @@ export const EditCard = ({
     onCancelEditCard();
   };
 
+  const handleDeleteCard = () => {
+    onHandleDeleteCard(id);
+    onCancelEditCard();
+  };
+
   return (
     <StyledCardContent>
       <StyledIcon>
-        <img src={deleteIcon} alt="editIcon" />
+        <img
+          src={deleteIcon}
+          alt="editIcon"
+          onClick={() => handleDeleteCard()}
+        />
       </StyledIcon>
       <StyledInput
         type="text"
