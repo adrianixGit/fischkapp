@@ -1,4 +1,3 @@
-import React from "react";
 import { StyledCardList } from "./components/styles/CardList.styled";
 import { AddNewCard } from "./components/AddNewCard";
 import { CreatedCard } from "./components/CreatedCrad";
@@ -9,10 +8,24 @@ import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/styles/GlobalStyles";
 import { useState } from "react";
 import { flashCardsData } from "./data/data";
+import axios from "axios";
+import { useEffect } from "react";
 
 function App() {
   const [isNewCard, setNewCard] = useState(false);
-  const [flashCards, setFlashCards] = useState<FlashCardType[]>(flashCardsData);
+  const [flashCards, setFlashCards] = useState<FlashCardType[]>([]);
+
+  const getFlashCards = () => {
+    const url = "https://training.nerdbord.io/api/v1/fischkapp/flashcards";
+    axios.get(url).then((response) => {
+      setFlashCards(response.data);
+      console.log(response.data);
+    });
+  };
+
+  useEffect(() => {
+    getFlashCards();
+  }, []);
 
   const handleChangeCardValue = (id: number, text: string, side: string) => {
     const ubdateCard = flashCards.map((card) => {
@@ -57,8 +70,8 @@ function App() {
           ) : null}
           {flashCards.map((flashCard) => (
             <CreatedCard
-              frontText={flashCard.frontText}
-              backText={flashCard.backText}
+              frontText={flashCard.front}
+              backText={flashCard.back}
               id={flashCard.id}
               onChangeCardValue={handleChangeCardValue}
               onHandleDeleteCard={handleDeleteCard}

@@ -15,11 +15,11 @@ export const AddNewBackCard = ({
   onSetNewCard,
 }: BackCardProps) => {
   const [backText, setBackText] = useState("");
-  const addNewFlashCard = (frontText: string, backText: string) => {
+  const addNewFlashCard = (front: string, back: string) => {
     const newFlashCard: FlashCardType = {
       id: Date.now(),
-      frontText: frontText,
-      backText: backText,
+      front: front,
+      back: back,
     };
 
     onSetFlashCards([...flashCards, newFlashCard]);

@@ -14,8 +14,8 @@ type BackCardProps = {
 
 interface FlashCardType {
   id: number;
-  frontText: string;
-  backText: string;
+  front: string;
+  back: string;
 }
 
 type FrontCardProps = {
