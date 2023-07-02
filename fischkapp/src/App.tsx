@@ -7,7 +7,7 @@ import { theme } from "./components/styles/theme/theme";
 import { Wrapper } from "./components/styles/Wrapper";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/styles/GlobalStyles";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { flashCardsData } from "./data/data";
 
 interface FlashCardType {
@@ -34,6 +34,16 @@ function App() {
     setFlashCards(ubdateCard);
   };
 
+  const handleDeleteCard = (id: number) => {
+    const cardIndex = flashCards.findIndex((card) => card.id === id);
+    flashCards.splice(cardIndex, 1);
+    setFlashCards([...flashCards]);
+
+    setTimeout(() => {
+      alert("Card has been removed");
+    }, 100);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -56,6 +66,7 @@ function App() {
               backText={flashCard.backText}
               id={flashCard.id}
               onChangeCardValue={handleChangeCardValue}
+              onHandleDeleteCard={handleDeleteCard}
             />
           ))}
         </StyledCardList>

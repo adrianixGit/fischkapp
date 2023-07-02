@@ -11,6 +11,7 @@ type CreatedCardPropType = {
   backText: string;
   onChangeCardValue: (id: number, text: string, cardSide: string) => void;
   id: number;
+  onHandleDeleteCard: (id: number) => void;
 };
 
 export const CreatedCard = ({
@@ -18,13 +19,13 @@ export const CreatedCard = ({
   backText,
   onChangeCardValue,
   id,
+  onHandleDeleteCard,
 }: CreatedCardPropType) => {
   const [flipCard, setFlipCard] = useState(true);
   const [isAnimate, setIsAnimate] = useState(false);
   const [edit, setEdit] = useState(false);
   const [cardTextToEdit, setCardTextToEdit] = useState("");
   const [editedSide, setEditedSide] = useState("");
-  const [isSaved, setIsSaved] = useState(false);
 
   const handleAnimateCard = () => {
     setIsAnimate(!isAnimate);
@@ -56,6 +57,7 @@ export const CreatedCard = ({
           cardTextToEdit={cardTextToEdit}
           editedSide={editedSide}
           onChangeCardValue={onChangeCardValue}
+          onHandleDeleteCard={onHandleDeleteCard}
           id={id}
         />
       ) : flipCard ? (

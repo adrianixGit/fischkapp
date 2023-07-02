@@ -11,7 +11,7 @@ type FrontCardPropTypes = {
   frontText: string;
   onSwitchModeEditCard: (text: string, editedSide: string) => void;
   onIsAnimate: () => void;
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  onClick?: () => void;
 };
 
 export const FrontCard = ({
