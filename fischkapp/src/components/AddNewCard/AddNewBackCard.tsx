@@ -31,15 +31,13 @@ export const AddNewBackCard = ({
   const [backText, setBackText] = useState("");
   const addNewFlashCard = (frontText: string, backText: string) => {
     const newFlashCard: FlashCardType = {
-      id: flashCards.length + 1,
+      id: Date.now(),
       frontText: frontText,
       backText: backText,
     };
 
     onSetFlashCards([...flashCards, newFlashCard]);
     onSetNewCard(false);
-
-    console.log(flashCards);
   };
 
   return (

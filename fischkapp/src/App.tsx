@@ -7,9 +7,8 @@ import { theme } from "./components/styles/theme/theme";
 import { Wrapper } from "./components/styles/Wrapper";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/styles/GlobalStyles";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { flashCardsData } from "./data/data";
-import { isDoStatement } from "typescript";
 
 interface FlashCardType {
   id: number;
