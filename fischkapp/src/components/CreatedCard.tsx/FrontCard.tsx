@@ -3,16 +3,7 @@ import {
   StyledIcon,
   StyledTextContainer,
 } from "../styles/CardGlobal.styled";
-
 import editIcon from "../../assets/edit.svg";
-import useState from "react";
-
-type FrontCardPropTypes = {
-  frontText: string;
-  onSwitchModeEditCard: (text: string, editedSide: string) => void;
-  onIsAnimate: () => void;
-  onClick?: () => void;
-};
 
 export const FrontCard = ({
   frontText,

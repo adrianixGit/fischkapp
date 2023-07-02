@@ -10,12 +10,6 @@ import { GlobalStyle } from "./components/styles/GlobalStyles";
 import { useState } from "react";
 import { flashCardsData } from "./data/data";
 
-interface FlashCardType {
-  id: number;
-  frontText: string;
-  backText: string;
-}
-
 function App() {
   const [isNewCard, setNewCard] = useState(false);
   const [flashCards, setFlashCards] = useState<FlashCardType[]>(flashCardsData);
@@ -51,6 +45,7 @@ function App() {
         <Header
           onSetNewCard={setNewCard}
           onFlashCardsNumber={flashCards.length}
+          isNewCard={isNewCard}
         />
         <StyledCardList>
           {isNewCard ? (

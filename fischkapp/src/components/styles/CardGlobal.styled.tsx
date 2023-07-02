@@ -7,21 +7,18 @@ type StyledCardPropType = {
 const flipAnimation = keyframes`
   0% {
     width: 100%;
-    
+    color: transparent;
   }
   50% {
     width: 0%;
-    opacity: 0;
-    
+    color: transparent;
   }
   51% {
     width: 0%;
-    opacity: 1;
-    
+    color: transparent;
   }
   100% {
     width: 100%;
-    
   }
 `;
 

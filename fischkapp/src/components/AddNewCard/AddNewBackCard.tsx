@@ -7,20 +7,6 @@ import { StyledDeleteButton } from "../styles/buttons/DeleteButton";
 import deleteIcon from "../../assets/deleteIcon.svg";
 import { useState } from "react";
 
-type BackCardProps = {
-  onFlipCard: () => void;
-  frontText: string;
-  flashCards: FlashCardType[];
-  onSetFlashCards: (isGetingObject: FlashCardType[]) => void;
-  onSetNewCard: (isSettingCard: boolean) => void;
-};
-
-interface FlashCardType {
-  id: number;
-  frontText: string;
-  backText: string;
-}
-
 export const AddNewBackCard = ({
   onFlipCard,
   frontText,

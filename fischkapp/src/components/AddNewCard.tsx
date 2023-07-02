@@ -3,18 +3,6 @@ import { AddNewFrontCard } from "./AddNewCard/AddNewFrontCard";
 import { AddNewBackCard } from "./AddNewCard/AddNewBackCard";
 import { useState } from "react";
 
-interface FlashCardType {
-  id: number;
-  frontText: string;
-  backText: string;
-}
-
-type AddNewCardPropType = {
-  onSetNewCard: (isSettingCard: boolean) => void;
-  flashCards: FlashCardType[];
-  onSetFlashCards: (isGetingObject: FlashCardType[]) => void;
-};
-
 export const AddNewCard = ({
   onSetNewCard,
   flashCards,
