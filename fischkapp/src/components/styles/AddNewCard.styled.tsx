@@ -30,5 +30,8 @@ export const StyledControlCardPanel = styled.div`
     color: ${({ theme }) => theme.colors.bluegray};
     font-size: 12px;
     font-weight: 500;
+    width: 75%;
+    overflow-y: auto;
+    max-height: 6vh;
   }
 `;

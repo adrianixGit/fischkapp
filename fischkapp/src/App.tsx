@@ -1,4 +1,4 @@
-import React from "react";
+import { FlashCardType } from "./components/AddNewCard/types";
 import { StyledCardList } from "./components/styles/CardList.styled";
 import { AddNewCard } from "./components/AddNewCard";
 import { CreatedCard } from "./components/CreatedCrad";
@@ -8,17 +8,26 @@ import { Wrapper } from "./components/styles/Wrapper";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/styles/GlobalStyles";
 import { useState } from "react";
-import { flashCardsData } from "./data/data";
-
-interface FlashCardType {
-  id: number;
-  frontText: string;
-  backText: string;
-}
+import axios from "axios";
+import { useEffect } from "react";
+import { getFlashCards } from "./components/API/ApiMethods";
 
 function App() {
   const [isNewCard, setNewCard] = useState(false);
-  const [flashCards, setFlashCards] = useState<FlashCardType[]>(flashCardsData);
+  const [flashCards, setFlashCards] = useState<FlashCardType[]>([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await getFlashCards();
+      setFlashCards(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleChangeCardValue = (id: number, text: string, side: string) => {
     const ubdateCard = flashCards.map((card) => {
@@ -51,6 +60,7 @@ function App() {
         <Header
           onSetNewCard={setNewCard}
           onFlashCardsNumber={flashCards.length}
+          isNewCard={isNewCard}
         />
         <StyledCardList>
           {isNewCard ? (
@@ -62,8 +72,8 @@ function App() {
           ) : null}
           {flashCards.map((flashCard) => (
             <CreatedCard
-              frontText={flashCard.frontText}
-              backText={flashCard.backText}
+              frontText={flashCard.front}
+              backText={flashCard.back}
               id={flashCard.id}
               onChangeCardValue={handleChangeCardValue}
               onHandleDeleteCard={handleDeleteCard}

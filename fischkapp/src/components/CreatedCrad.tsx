@@ -4,7 +4,6 @@ import { BackCard } from "./CreatedCard.tsx/BackCard";
 import { useState } from "react";
 import { StyledCard } from "./styles/CardGlobal.styled";
 import { EditCard } from "./CreatedCard.tsx/EditCard";
-import { useEffect } from "react";
 
 type CreatedCardPropType = {
   frontText: string;

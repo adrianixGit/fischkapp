@@ -1,3 +1,4 @@
+import { FlashCardType } from "./types";
 import { StyledCardContent } from "../styles/CardGlobal.styled";
 import { StyledInput } from "../styles/AddNewCard.styled";
 import { StyledCardButton } from "../styles/buttons/CardButton";
@@ -15,12 +16,6 @@ type BackCardProps = {
   onSetNewCard: (isSettingCard: boolean) => void;
 };
 
-interface FlashCardType {
-  id: number;
-  frontText: string;
-  backText: string;
-}
-
 export const AddNewBackCard = ({
   onFlipCard,
   frontText,
@@ -29,11 +24,11 @@ export const AddNewBackCard = ({
   onSetNewCard,
 }: BackCardProps) => {
   const [backText, setBackText] = useState("");
-  const addNewFlashCard = (frontText: string, backText: string) => {
+  const addNewFlashCard = (front: string, back: string) => {
     const newFlashCard: FlashCardType = {
       id: Date.now(),
-      frontText: frontText,
-      backText: backText,
+      front: front,
+      back: back,
     };
 
     onSetFlashCards([...flashCards, newFlashCard]);

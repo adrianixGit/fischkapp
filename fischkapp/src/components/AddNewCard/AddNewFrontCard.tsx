@@ -1,4 +1,3 @@
-// import { CardWrapper } from "../styles/SitesCards.styled";
 import { StyledInput } from "../styles/AddNewCard.styled";
 import { StyledCardButton } from "../styles/buttons/CardButton";
 import { StyledCardContent } from "../styles/CardGlobal.styled";

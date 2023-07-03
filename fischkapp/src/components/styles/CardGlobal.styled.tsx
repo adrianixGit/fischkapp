@@ -7,21 +7,18 @@ type StyledCardPropType = {
 const flipAnimation = keyframes`
   0% {
     width: 100%;
-    
+    color: transparent;
   }
   50% {
     width: 0%;
-    opacity: 0;
-    
+    color: transparent;
   }
   51% {
     width: 0%;
-    opacity: 1;
-    
+    color: transparent;
   }
   100% {
     width: 100%;
-    
   }
 `;
 
@@ -30,6 +27,7 @@ export const StyledCard = styled.div<StyledCardPropType>`
   display: flex;
   width: 95vw;
   min-height: 20vh;
+  max-height: 20vh;
   background-color: ${({ theme }) => theme.colors.white};
   background-color: transparent;
   border-radius: 16px;
@@ -43,6 +41,10 @@ export const StyledCardContent = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledIcon = styled.div`
@@ -53,9 +55,11 @@ export const StyledIcon = styled.div`
 `;
 
 export const StyledTextContainer = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  overflow-y: auto;
 `;

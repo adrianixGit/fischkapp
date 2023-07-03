@@ -2,12 +2,7 @@ import { StyledCard } from "./styles/CardGlobal.styled";
 import { AddNewFrontCard } from "./AddNewCard/AddNewFrontCard";
 import { AddNewBackCard } from "./AddNewCard/AddNewBackCard";
 import { useState } from "react";
-
-interface FlashCardType {
-  id: number;
-  frontText: string;
-  backText: string;
-}
+import { FlashCardType } from "../components/AddNewCard/types";
 
 type AddNewCardPropType = {
   onSetNewCard: (isSettingCard: boolean) => void;
