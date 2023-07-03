@@ -1,3 +1,4 @@
+import { FlashCardType } from "./components/AddNewCard/types";
 import { StyledCardList } from "./components/styles/CardList.styled";
 import { AddNewCard } from "./components/AddNewCard";
 import { CreatedCard } from "./components/CreatedCrad";
@@ -7,24 +8,25 @@ import { Wrapper } from "./components/styles/Wrapper";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/styles/GlobalStyles";
 import { useState } from "react";
-import { flashCardsData } from "./data/data";
 import axios from "axios";
 import { useEffect } from "react";
+import { getFlashCards } from "./components/API/ApiMethods";
 
 function App() {
   const [isNewCard, setNewCard] = useState(false);
   const [flashCards, setFlashCards] = useState<FlashCardType[]>([]);
 
-  const getFlashCards = () => {
-    const url = "https://training.nerdbord.io/api/v1/fischkapp/flashcards";
-    axios.get(url).then((response) => {
-      setFlashCards(response.data);
-      console.log(response.data);
-    });
+  const fetchData = async () => {
+    try {
+      const response = await getFlashCards();
+      setFlashCards(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    getFlashCards();
+    fetchData();
   }, []);
 
   const handleChangeCardValue = (id: number, text: string, side: string) => {

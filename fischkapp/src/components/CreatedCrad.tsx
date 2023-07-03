@@ -5,6 +5,14 @@ import { useState } from "react";
 import { StyledCard } from "./styles/CardGlobal.styled";
 import { EditCard } from "./CreatedCard.tsx/EditCard";
 
+type CreatedCardPropType = {
+  frontText: string;
+  backText: string;
+  onChangeCardValue: (id: number, text: string, cardSide: string) => void;
+  id: number;
+  onHandleDeleteCard: (id: number) => void;
+};
+
 export const CreatedCard = ({
   frontText,
   backText,

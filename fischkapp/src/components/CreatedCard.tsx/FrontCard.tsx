@@ -5,6 +5,13 @@ import {
 } from "../styles/CardGlobal.styled";
 import editIcon from "../../assets/edit.svg";
 
+type FrontCardPropTypes = {
+  frontText: string;
+  onSwitchModeEditCard: (text: string, editedSide: string) => void;
+  onIsAnimate: () => void;
+  onClick?: () => void;
+};
+
 export const FrontCard = ({
   frontText,
   onSwitchModeEditCard,

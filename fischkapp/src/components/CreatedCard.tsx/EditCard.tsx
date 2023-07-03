@@ -5,6 +5,15 @@ import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
 import deleteIcon from "../../assets/deleteIcon.svg";
 import { useState } from "react";
 
+type EditCardPropType = {
+  cardTextToEdit: string;
+  onCancelEditCard: () => void;
+  editedSide: string;
+  onChangeCardValue: (id: number, text: string, cardSide: string) => void;
+  id: number;
+  onHandleDeleteCard: (id: number) => void;
+};
+
 export const EditCard = ({
   cardTextToEdit,
   onCancelEditCard,
