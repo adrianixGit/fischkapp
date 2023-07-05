@@ -1,4 +1,5 @@
 import { FlashCardType } from "./types";
+import { postFlashCards } from "../API/ApiMethods";
 import { StyledCardContent } from "../styles/CardGlobal.styled";
 import { StyledInput } from "../styles/AddNewCard.styled";
 import { StyledCardButton } from "../styles/buttons/CardButton";
@@ -32,6 +33,7 @@ export const AddNewBackCard = ({
     };
 
     onSetFlashCards([...flashCards, newFlashCard]);
+    postFlashCards(newFlashCard);
     onSetNewCard(false);
   };
 

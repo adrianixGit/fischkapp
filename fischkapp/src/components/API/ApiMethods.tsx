@@ -8,3 +8,14 @@ export const getFlashCards = () => {
     return response.data;
   });
 };
+
+export const postFlashCards = (newFlashCard: any) => {
+  axios
+    .post(url, newFlashCard, {
+      headers: {
+        Authorization: "secret_token",
+      },
+    })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
