@@ -7,7 +7,7 @@ import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
 import { StyledControlCardPanel } from "../styles/AddNewCard.styled";
 import { StyledDeleteButton } from "../styles/buttons/DeleteButton";
 import deleteIcon from "../../assets/deleteIcon.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type BackCardProps = {
   onFlipCard: () => void;
@@ -25,16 +25,22 @@ export const AddNewBackCard = ({
   onSetNewCard,
 }: BackCardProps) => {
   const [backText, setBackText] = useState("");
-  const addNewFlashCard = (front: string, back: string) => {
+  const addNewFlashCard = async (front: string, back: string) => {
     const newFlashCard: FlashCardType = {
       id: Date.now(),
       front: front,
       back: back,
     };
 
-    onSetFlashCards([...flashCards, newFlashCard]);
-    postFlashCards(newFlashCard);
-    onSetNewCard(false);
+    try {
+      const createdCard: any = await postFlashCards(newFlashCard);
+      console.log(createdCard);
+      onSetFlashCards([...flashCards, createdCard]);
+      //postFlashCards(newFlashCard);
+      onSetNewCard(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
