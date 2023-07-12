@@ -20,6 +20,7 @@ function App() {
     try {
       const response = await getFlashCards();
       setFlashCards(response);
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
