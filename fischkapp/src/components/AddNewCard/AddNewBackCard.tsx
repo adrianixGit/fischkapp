@@ -34,9 +34,7 @@ export const AddNewBackCard = ({
 
     try {
       const createdCard: any = await postFlashCards(newFlashCard);
-      console.log(createdCard);
-      onSetFlashCards([...flashCards, createdCard]);
-      //postFlashCards(newFlashCard);
+      onSetFlashCards([...flashCards, createdCard.flashcard]);
       onSetNewCard(false);
     } catch (error) {
       console.log(error);
