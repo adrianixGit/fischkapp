@@ -1,4 +1,5 @@
 import { FlashCardType } from "./types";
+import { postFlashCards } from "../API/ApiMethods";
 import { StyledCardContent } from "../styles/CardGlobal.styled";
 import { StyledInput } from "../styles/AddNewCard.styled";
 import { StyledCardButton } from "../styles/buttons/CardButton";
@@ -6,7 +7,7 @@ import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
 import { StyledControlCardPanel } from "../styles/AddNewCard.styled";
 import { StyledDeleteButton } from "../styles/buttons/DeleteButton";
 import deleteIcon from "../../assets/deleteIcon.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type BackCardProps = {
   onFlipCard: () => void;
@@ -24,15 +25,20 @@ export const AddNewBackCard = ({
   onSetNewCard,
 }: BackCardProps) => {
   const [backText, setBackText] = useState("");
-  const addNewFlashCard = (front: string, back: string) => {
+  const addNewFlashCard = async (front: string, back: string) => {
     const newFlashCard: FlashCardType = {
       id: Date.now(),
       front: front,
       back: back,
     };
 
-    onSetFlashCards([...flashCards, newFlashCard]);
-    onSetNewCard(false);
+    try {
+      const createdCard: any = await postFlashCards(newFlashCard);
+      onSetFlashCards([...flashCards, createdCard.flashcard]);
+      onSetNewCard(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
