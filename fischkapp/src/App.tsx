@@ -1,3 +1,4 @@
+import { deleteFlashCards } from "./components/API/ApiMethods";
 import { FlashCardType } from "./components/AddNewCard/types";
 import { StyledCardList } from "./components/styles/CardList.styled";
 import { AddNewCard } from "./components/AddNewCard";
@@ -32,7 +33,7 @@ function App() {
 
   const handleChangeCardValue = (id: number, text: string, side: string) => {
     const ubdateCard = flashCards.map((card) => {
-      if (card.id === id) {
+      if (card._id === id) {
         return {
           ...card,
           [side]: text,
@@ -45,7 +46,8 @@ function App() {
   };
 
   const handleDeleteCard = (id: number) => {
-    const cardIndex = flashCards.findIndex((card) => card.id === id);
+    deleteFlashCards(id);
+    const cardIndex = flashCards.findIndex((card) => card._id === id);
     flashCards.splice(cardIndex, 1);
     setFlashCards([...flashCards]);
 
@@ -75,7 +77,7 @@ function App() {
             <CreatedCard
               frontText={flashCard.front}
               backText={flashCard.back}
-              id={flashCard.id}
+              id={flashCard._id}
               onChangeCardValue={handleChangeCardValue}
               onHandleDeleteCard={handleDeleteCard}
             />
@@ -87,5 +89,3 @@ function App() {
 }
 
 export default App;
-
-//MUSZE DODAC NOWA FUNKCJE KTORA ROZDZIELI MI CANCEL I SAVE W EDIT AK ABY CANCEL WYLACZALO TYLKO KARTE EDYTOWANIA A SAVE DODAWALO ELEMENT DO TABLICY

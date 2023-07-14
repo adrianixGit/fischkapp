@@ -27,7 +27,7 @@ export const AddNewBackCard = ({
   const [backText, setBackText] = useState("");
   const addNewFlashCard = async (front: string, back: string) => {
     const newFlashCard: FlashCardType = {
-      id: Date.now(),
+      _id: Date.now(),
       front: front,
       back: back,
     };

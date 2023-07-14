@@ -1,3 +1,4 @@
+import { deleteFlashCards } from "../API/ApiMethods";
 import { StyledCardContent, StyledIcon } from "../styles/CardGlobal.styled";
 import { StyledInput } from "../styles/AddNewCard.styled";
 import { StyledCardButton } from "../styles/buttons/CardButton";
