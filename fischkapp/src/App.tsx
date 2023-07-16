@@ -36,7 +36,7 @@ function App() {
     text: string,
     side: string
   ) => {
-    const cardToEdit = flashCards.filter((card) => card._id === id);
+    //const cardToEdit = flashCards.filter((card) => card._id === id);
     // const updatedCard = cardToEdit.map((card) => {
     //   return {
     //     ...card,
@@ -44,37 +44,42 @@ function App() {
     //   };
     // });
 
-    const ubdateCard = flashCards.map((card) => {
-      if (card._id === id) {
-        console.log(id, card._id);
-        return {
-          ...card,
-          [side]: text,
-        };
-      }
-
-      return card;
-    });
-
-    setFlashCards(ubdateCard);
     try {
       const patchedCard = await patchFlashCards(id, text, side);
+      if (patchedCard.updatedFlashcard.acknowledged) {
+        const updateCard = flashCards.map((card) => {
+          if (card._id === id) {
+            return {
+              ...card,
+              [side]: text,
+            };
+          }
 
-      console.log(patchedCard);
+          return card;
+        });
+
+        setFlashCards(updateCard);
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleDeleteCard = (id: number) => {
-    deleteFlashCards(id);
-    const cardIndex = flashCards.findIndex((card) => card._id === id);
-    flashCards.splice(cardIndex, 1);
-    setFlashCards([...flashCards]);
+  const handleDeleteCard = async (id: number) => {
+    try {
+      const handleDeleteCard = await deleteFlashCards(id);
+      if (handleDeleteCard.message === "Flashcard deleted successfully") {
+        const cardIndex = flashCards.findIndex((card) => card._id === id);
+        flashCards.splice(cardIndex, 1);
+        setFlashCards([...flashCards]);
 
-    setTimeout(() => {
-      alert("Card has been removed");
-    }, 100);
+        setTimeout(() => {
+          alert("Card has been removed");
+        }, 100);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
