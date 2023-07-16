@@ -1,4 +1,4 @@
-import { FlashCardType } from "./types";
+import { FlashCardType, NewFlashCardType } from "./types";
 import { postFlashCards } from "../API/ApiMethods";
 import { StyledCardContent } from "../styles/CardGlobal.styled";
 import { StyledInput } from "../styles/AddNewCard.styled";
@@ -26,8 +26,7 @@ export const AddNewBackCard = ({
 }: BackCardProps) => {
   const [backText, setBackText] = useState("");
   const addNewFlashCard = async (front: string, back: string) => {
-    const newFlashCard: FlashCardType = {
-      _id: Date.now(),
+    const newFlashCard: NewFlashCardType = {
       front: front,
       back: back,
     };
