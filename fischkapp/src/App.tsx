@@ -1,4 +1,4 @@
-import { deleteFlashCards } from "./components/API/ApiMethods";
+import { deleteFlashCards, patchFlashCards } from "./components/API/ApiMethods";
 import { FlashCardType } from "./components/AddNewCard/types";
 import { StyledCardList } from "./components/styles/CardList.styled";
 import { AddNewCard } from "./components/AddNewCard";
@@ -31,18 +31,39 @@ function App() {
     fetchData();
   }, []);
 
-  const handleChangeCardValue = (id: number, text: string, side: string) => {
+  const handleChangeCardValue = async (
+    id: number,
+    text: string,
+    side: string
+  ) => {
+    const cardToEdit = flashCards.filter((card) => card._id === id);
+    // const updatedCard = cardToEdit.map((card) => {
+    //   return {
+    //     ...card,
+    //     [side]: text,
+    //   };
+    // });
+
     const ubdateCard = flashCards.map((card) => {
       if (card._id === id) {
+        console.log(id, card._id);
         return {
           ...card,
           [side]: text,
         };
       }
+
       return card;
     });
 
     setFlashCards(ubdateCard);
+    try {
+      const patchedCard = await patchFlashCards(id, text, side);
+
+      console.log(patchedCard);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleDeleteCard = (id: number) => {

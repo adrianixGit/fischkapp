@@ -17,7 +17,7 @@ export const FrontCard = ({
   onSwitchModeEditCard,
   onIsAnimate,
 }: FrontCardPropTypes) => {
-  const editedSide = "frontText";
+  const editedSide = "front";
 
   return (
     <StyledCardContent>

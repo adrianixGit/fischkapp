@@ -38,3 +38,25 @@ export const deleteFlashCards = (id: number) => {
       console.log(err);
     });
 };
+
+export const patchFlashCards = (id: number, text: string, side: string) => {
+  const patchUrl = url + "/" + id;
+
+  return axios
+    .patch(
+      patchUrl,
+      {
+        [side]: text,
+      },
+      {
+        headers: {
+          Authorization: "secret_token",
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.log(err.response.data));
+};
