@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { FlashCardType } from "../AddNewCard/types";
+import { FlashCardType, NewFlashCardType } from "../AddNewCard/types";
 import { useState, useEffect } from "react";
 
 const url = "https://training.nerdbord.io/api/v1/fischkapp/flashcards";
@@ -10,7 +10,7 @@ export const getFlashCards = () => {
   });
 };
 
-export const postFlashCards = (newFlashCard: FlashCardType) => {
+export const postFlashCards = (newFlashCard: NewFlashCardType) => {
   return axios
     .post(url, newFlashCard, {
       headers: {
@@ -20,5 +20,21 @@ export const postFlashCards = (newFlashCard: FlashCardType) => {
     .then((res) => {
       return res.data;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err.response.data));
+};
+
+export const deleteFlashCards = (id: number) => {
+  const deleteCardUrl = url + "/" + id;
+  return axios
+    .delete(deleteCardUrl, {
+      headers: {
+        Authorization: "secret_token",
+      },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
