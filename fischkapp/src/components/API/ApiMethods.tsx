@@ -32,7 +32,7 @@ export const deleteFlashCards = (id: number) => {
       },
     })
     .then((res) => {
-      return res.data;
+      return res.status;
     })
     .catch((err) => {
       console.log(err);
@@ -56,7 +56,7 @@ export const patchFlashCards = (id: number, text: string, side: string) => {
       }
     )
     .then((res) => {
-      return res.data;
+      return res.status;
     })
     .catch((err) => console.log(err.response.data));
 };

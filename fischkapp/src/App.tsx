@@ -36,17 +36,10 @@ function App() {
     text: string,
     side: string
   ) => {
-    //const cardToEdit = flashCards.filter((card) => card._id === id);
-    // const updatedCard = cardToEdit.map((card) => {
-    //   return {
-    //     ...card,
-    //     [side]: text,
-    //   };
-    // });
-
     try {
       const patchedCard = await patchFlashCards(id, text, side);
-      if (patchedCard.updatedFlashcard.acknowledged) {
+      console.log(patchedCard);
+      if (patchedCard < 400) {
         const updateCard = flashCards.map((card) => {
           if (card._id === id) {
             return {
@@ -68,18 +61,19 @@ function App() {
   const handleDeleteCard = async (id: number) => {
     try {
       const handleDeleteCard = await deleteFlashCards(id);
-      if (handleDeleteCard.message === "Flashcard deleted successfully") {
+
+      if (handleDeleteCard < 400) {
         const cardIndex = flashCards.findIndex((card) => card._id === id);
         flashCards.splice(cardIndex, 1);
         setFlashCards([...flashCards]);
-
-        setTimeout(() => {
-          alert("Card has been removed");
-        }, 100);
       }
     } catch (error) {
       console.log(error);
     }
+
+    setTimeout(() => {
+      alert("Card has been removed");
+    }, 100);
   };
 
   return (

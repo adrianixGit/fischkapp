@@ -27,7 +27,6 @@ export const EditCard = ({
   const handleSaveEditedCard = () => {
     onChangeCardValue(id, editedText, editedSide);
     onCancelEditCard();
-    //console.log(id, editedText, editedSide);
   };
 
   const handleDeleteCard = () => {
