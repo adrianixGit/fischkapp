@@ -1,4 +1,5 @@
 import { deleteFlashCards, patchFlashCards } from "./components/API/ApiMethods";
+import { AxiosResponse } from "axios";
 import { FlashCardType } from "./components/AddNewCard/types";
 import { StyledCardList } from "./components/styles/CardList.styled";
 import { AddNewCard } from "./components/AddNewCard";
@@ -37,9 +38,13 @@ function App() {
     side: string
   ) => {
     try {
-      const patchedCard = await patchFlashCards(id, text, side);
-      console.log(patchedCard);
-      if (patchedCard < 400) {
+      const response: AxiosResponse<any, any> = await patchFlashCards(
+        id,
+        text,
+        side
+      );
+
+      if (response.status < 400) {
         const updateCard = flashCards.map((card) => {
           if (card._id === id) {
             return {
@@ -60,9 +65,9 @@ function App() {
 
   const handleDeleteCard = async (id: number) => {
     try {
-      const handleDeleteCard = await deleteFlashCards(id);
+      const response: AxiosResponse<any, any> = await deleteFlashCards(id);
 
-      if (handleDeleteCard < 400) {
+      if (response.status < 400) {
         const cardIndex = flashCards.findIndex((card) => card._id === id);
         flashCards.splice(cardIndex, 1);
         setFlashCards([...flashCards]);

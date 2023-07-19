@@ -23,40 +23,34 @@ export const postFlashCards = (newFlashCard: NewFlashCardType) => {
     .catch((err) => console.log(err.response.data));
 };
 
-export const deleteFlashCards = (id: number) => {
+export const deleteFlashCards = (
+  id: number
+): Promise<AxiosResponse<any, any>> => {
   const deleteCardUrl = url + "/" + id;
-  return axios
-    .delete(deleteCardUrl, {
-      headers: {
-        Authorization: "secret_token",
-      },
-    })
-    .then((res) => {
-      return res.status;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return axios.delete(deleteCardUrl, {
+    headers: {
+      Authorization: "secret_token",
+    },
+  });
 };
 
-export const patchFlashCards = (id: number, text: string, side: string) => {
+export const patchFlashCards = (
+  id: number,
+  text: string,
+  side: string
+): Promise<AxiosResponse<any, any>> => {
   const patchUrl = url + "/" + id;
 
-  return axios
-    .patch(
-      patchUrl,
-      {
-        [side]: text,
+  return axios.patch(
+    patchUrl,
+    {
+      [side]: text,
+    },
+    {
+      headers: {
+        Authorization: "secret_token",
+        "Content-Type": "application/json",
       },
-      {
-        headers: {
-          Authorization: "secret_token",
-          "Content-Type": "application/json",
-        },
-      }
-    )
-    .then((res) => {
-      return res.status;
-    })
-    .catch((err) => console.log(err.response.data));
+    }
+  );
 };
