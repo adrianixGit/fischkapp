@@ -1,4 +1,4 @@
-import { deleteFlashCards } from "./components/API/ApiMethods";
+import { deleteFlashCards, patchFlashCards } from "./components/API/ApiMethods";
 import { FlashCardType } from "./components/AddNewCard/types";
 import { StyledCardList } from "./components/styles/CardList.styled";
 import { AddNewCard } from "./components/AddNewCard";
@@ -31,25 +31,45 @@ function App() {
     fetchData();
   }, []);
 
-  const handleChangeCardValue = (id: number, text: string, side: string) => {
-    const ubdateCard = flashCards.map((card) => {
-      if (card._id === id) {
-        return {
-          ...card,
-          [side]: text,
-        };
-      }
-      return card;
-    });
+  const handleChangeCardValue = async (
+    id: number,
+    text: string,
+    side: string
+  ) => {
+    try {
+      const patchedCard = await patchFlashCards(id, text, side);
+      console.log(patchedCard);
+      if (patchedCard < 400) {
+        const updateCard = flashCards.map((card) => {
+          if (card._id === id) {
+            return {
+              ...card,
+              [side]: text,
+            };
+          }
 
-    setFlashCards(ubdateCard);
+          return card;
+        });
+
+        setFlashCards(updateCard);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleDeleteCard = (id: number) => {
-    deleteFlashCards(id);
-    const cardIndex = flashCards.findIndex((card) => card._id === id);
-    flashCards.splice(cardIndex, 1);
-    setFlashCards([...flashCards]);
+  const handleDeleteCard = async (id: number) => {
+    try {
+      const handleDeleteCard = await deleteFlashCards(id);
+
+      if (handleDeleteCard < 400) {
+        const cardIndex = flashCards.findIndex((card) => card._id === id);
+        flashCards.splice(cardIndex, 1);
+        setFlashCards([...flashCards]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
 
     setTimeout(() => {
       alert("Card has been removed");
