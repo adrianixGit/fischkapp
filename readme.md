@@ -17,3 +17,5 @@ This project aims to create a simple app that supports learning.
 ### 🔧 Technical requirements
 
 HTML, CSS, Javascript
+
+Link to the application page: https://adrianixgit.github.io/fischkapp/
