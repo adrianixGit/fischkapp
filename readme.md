@@ -18,4 +18,4 @@ This project aims to create a simple app that supports learning.
 
 HTML, CSS, Javascript
 
-Link to the application page: https://adrianixgit.github.io/fischkapp/
+Link to the application page: https://fischkapp.vercel.app/?vercelToolbarCode=1OUiTHx8qNu_VaE
