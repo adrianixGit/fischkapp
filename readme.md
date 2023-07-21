@@ -17,3 +17,5 @@ This project aims to create a simple app that supports learning.
 ### 🔧 Technical requirements
 
 HTML, CSS, Javascript
+
+Live: https://vercel.com/adrianixgit/fischkapp
