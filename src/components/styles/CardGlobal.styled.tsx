@@ -4,6 +4,10 @@ type StyledCardPropType = {
   isAnimate?: boolean;
 };
 
+type StyledTextContainerType = {
+  textLength?: number;
+};
+
 const flipAnimation = keyframes`
   0% {
     width: 100%;
@@ -54,12 +58,13 @@ export const StyledIcon = styled.div`
   cursor: pointer;
 `;
 
-export const StyledTextContainer = styled.div`
+export const StyledTextContainer = styled.div<StyledTextContainerType>`
   width: 90%;
-  height: 95%;
+  height: 80%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: ${({ textLength }) =>
+    textLength && textLength > 400 ? "flex-start" : "center"};
   text-align: center;
   overflow-y: auto;
 `;

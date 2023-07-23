@@ -19,6 +19,8 @@ export const FrontCard = ({
 }: FrontCardPropTypes) => {
   const editedSide = "front";
 
+  console.log(frontText.length);
+
   return (
     <StyledCardContent>
       <StyledIcon>
@@ -28,9 +30,14 @@ export const FrontCard = ({
           onClick={() => onSwitchModeEditCard(frontText, editedSide)}
         />
       </StyledIcon>
-      <StyledTextContainer onClick={() => onIsAnimate()}>
+      <StyledTextContainer
+        onClick={() => onIsAnimate()}
+        textLength={frontText.length}
+      >
         <p>{frontText}</p>
       </StyledTextContainer>
     </StyledCardContent>
   );
 };
+
+//Musze to teraz zamienic na styled component te p class
