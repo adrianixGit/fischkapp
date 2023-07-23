@@ -28,7 +28,10 @@ export const FrontCard = ({
           onClick={() => onSwitchModeEditCard(frontText, editedSide)}
         />
       </StyledIcon>
-      <StyledTextContainer onClick={() => onIsAnimate()}>
+      <StyledTextContainer
+        onClick={() => onIsAnimate()}
+        textLength={frontText.length}
+      >
         <p>{frontText}</p>
       </StyledTextContainer>
     </StyledCardContent>
