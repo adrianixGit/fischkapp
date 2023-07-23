@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/fischkapp/static/js/main.86fd4376.js",
+    "index.html": "/fischkapp/index.html",
+    "static/media/edit.svg": "/fischkapp/static/media/edit.27bcbb6208f3952c0aaa86763f640287.svg",
+    "static/media/addButton.svg": "/fischkapp/static/media/addButton.25267922470caab77fc84f5a352cd82b.svg",
+    "static/media/deleteIcon.svg": "/fischkapp/static/media/deleteIcon.aa56693004c60c34afa083f7b34d71d7.svg",
+    "main.86fd4376.js.map": "/fischkapp/static/js/main.86fd4376.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.86fd4376.js"
+  ]
+}
