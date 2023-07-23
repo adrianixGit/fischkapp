@@ -19,8 +19,6 @@ export const FrontCard = ({
 }: FrontCardPropTypes) => {
   const editedSide = "front";
 
-  console.log(frontText.length);
-
   return (
     <StyledCardContent>
       <StyledIcon>
@@ -39,5 +37,3 @@ export const FrontCard = ({
     </StyledCardContent>
   );
 };
-
-//Musze to teraz zamienic na styled component te p class
