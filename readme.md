@@ -19,5 +19,5 @@ This project aims to create a simple app that supports learning.
 HTML, CSS, Javascript
 
 
-Live: https://vercel.com/adrianixgit/fischkapp
+Live: https://fischkapp-project-552xhw2au-adrianixgit.vercel.app/
 
