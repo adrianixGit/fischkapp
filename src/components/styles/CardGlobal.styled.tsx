@@ -12,6 +12,7 @@ const flipAnimation = keyframes`
   0% {
     width: 100%;
     color: transparent;
+    
   }
   50% {
     width: 0%;
