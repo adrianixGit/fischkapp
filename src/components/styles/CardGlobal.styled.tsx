@@ -29,7 +29,7 @@ const flipAnimation = keyframes`
 export const StyledCard = styled.div<StyledCardPropType>`
   margin: 1vh auto;
   display: flex;
-  width: 95vw;
+  width: 95%;
   min-height: 20vh;
   max-height: 20vh;
   background-color: ${({ theme }) => theme.colors.white};
