@@ -37,7 +37,7 @@ export const StyledCard = styled.div<StyledCardPropType>`
   border-radius: 16px;
   padding: 10px;
   box-shadow: 0px 20px 34px rgba(152, 163, 207, 0.3);
-  animation: ${({ isAnimate }) => (isAnimate ? flipAnimation : "none")} 2s
+  animation: ${({ isAnimate }) => (isAnimate ? flipAnimation : "none")} 1s
     ease-in-out;
 `;
 
