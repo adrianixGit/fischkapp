@@ -12,17 +12,20 @@ const flipAnimation = keyframes`
   0% {
     width: 100%;
     color: transparent;
-    
+    opacity: 100%;
   }
   50% {
     width: 0%;
+    opacity: 0%;
     color: transparent;
   }
   51% {
+    opacity: 0%;
     width: 0%;
     color: transparent;
   }
   100% {
+    opacity: 100%;
     width: 100%;
   }
 `;
