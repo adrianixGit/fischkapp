@@ -52,7 +52,7 @@ export const AddNewBackCard = ({
     <StyledCardContent>
       <StyledControlCardPanel>
         <p>{frontText}</p>
-        <StyledDeleteButton>
+        <StyledDeleteButton onClick={() => onSetNewCard(false)}>
           <img src={deleteIcon} alt="delete" />
         </StyledDeleteButton>
       </StyledControlCardPanel>
