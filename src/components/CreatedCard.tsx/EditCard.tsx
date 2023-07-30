@@ -3,7 +3,7 @@ import { StyledInput } from "../styles/AddNewCard.styled";
 import { StyledCardButton } from "../styles/buttons/CardButton";
 import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
 import deleteIcon from "../../assets/deleteIcon.svg";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 type EditCardPropType = {
   cardTextToEdit: string;
@@ -23,6 +23,13 @@ export const EditCard = ({
   onHandleDeleteCard,
 }: EditCardPropType) => {
   const [editedText, setEditedText] = useState(cardTextToEdit);
+  const focusRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (focusRef.current) {
+      focusRef.current.focus();
+    }
+  }, []);
 
   const handleSaveEditedCard = () => {
     onChangeCardValue(id, editedText, editedSide);
@@ -47,6 +54,7 @@ export const EditCard = ({
         type="text"
         value={editedText}
         onChange={(e) => setEditedText(e.target.value)}
+        ref={focusRef}
       />
       <StyledButtonsContainer>
         <StyledCardButton onClick={() => onCancelEditCard()}>

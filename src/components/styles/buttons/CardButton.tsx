@@ -5,7 +5,7 @@ interface StyledCardButtonProps {
 }
 
 export const StyledCardButton = styled.button<StyledCardButtonProps>`
-  padding: 10px;
+  padding: 1vh;
   background-color: ${({ theme, bg }) =>
     bg == "violet" ? theme.colors.bluegray : theme.colors.white};
   border-radius: 16px;

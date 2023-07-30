@@ -12,16 +12,20 @@ const flipAnimation = keyframes`
   0% {
     width: 100%;
     color: transparent;
+    opacity: 100%;
   }
   50% {
     width: 0%;
+    opacity: 0%;
     color: transparent;
   }
   51% {
+    opacity: 0%;
     width: 0%;
     color: transparent;
   }
   100% {
+    opacity: 100%;
     width: 100%;
   }
 `;
@@ -29,15 +33,15 @@ const flipAnimation = keyframes`
 export const StyledCard = styled.div<StyledCardPropType>`
   margin: 1vh auto;
   display: flex;
-  width: 95vw;
-  min-height: 20vh;
-  max-height: 20vh;
+  width: 95%;
+  min-height: 22vh;
+  max-height: 22vh;
   background-color: ${({ theme }) => theme.colors.white};
   background-color: transparent;
   border-radius: 16px;
   padding: 10px;
   box-shadow: 0px 20px 34px rgba(152, 163, 207, 0.3);
-  animation: ${({ isAnimate }) => (isAnimate ? flipAnimation : "none")} 2s
+  animation: ${({ isAnimate }) => (isAnimate ? flipAnimation : "none")} 1s
     ease-in-out;
 `;
 

@@ -11,13 +11,13 @@ import { Header } from "./components/Header";
 import { GlobalStyle } from "./components/styles/GlobalStyles";
 import { useState } from "react";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { getFlashCards } from "./components/API/ApiMethods";
 
 function App() {
   const [isNewCard, setNewCard] = useState(false);
   const [flashCards, setFlashCards] = useState<FlashCardType[]>([]);
-
+  const topRef = useRef<any>(null);
   const fetchData = async () => {
     try {
       const response = await getFlashCards();
@@ -89,8 +89,9 @@ function App() {
           onSetNewCard={setNewCard}
           onFlashCardsNumber={flashCards.length}
           isNewCard={isNewCard}
+          topRef={topRef}
         />
-        <StyledCardList>
+        <StyledCardList ref={topRef}>
           {isNewCard ? (
             <AddNewCard
               onSetNewCard={setNewCard}

@@ -16,7 +16,7 @@ export const AddNewCard = ({
   onSetFlashCards,
 }: AddNewCardPropType) => {
   const [isFront, setIsFront] = useState<boolean>(true);
-  const [forntText, setFrontText] = useState("Front Text");
+  const [forntText, setFrontText] = useState("");
 
   const handleFlipCard = () => {
     setIsFront(!isFront);
@@ -29,6 +29,7 @@ export const AddNewCard = ({
           onFlipCard={handleFlipCard}
           onSetNewCard={onSetNewCard}
           onSetFrontText={setFrontText}
+          frontText={forntText}
         />
       ) : (
         <AddNewBackCard

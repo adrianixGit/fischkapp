@@ -31,7 +31,7 @@ export const CreatedCard = ({
 
     setTimeout(() => {
       setIsAnimate(false);
-    }, 2000);
+    }, 1000);
   };
 
   const handleFlipCard = () => {
