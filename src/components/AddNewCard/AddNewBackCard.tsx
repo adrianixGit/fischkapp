@@ -7,7 +7,7 @@ import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
 import { StyledControlCardPanel } from "../styles/AddNewCard.styled";
 import { StyledDeleteButton } from "../styles/buttons/DeleteButton";
 import deleteIcon from "../../assets/deleteIcon.svg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type BackCardProps = {
   onFlipCard: () => void;
@@ -25,6 +25,14 @@ export const AddNewBackCard = ({
   onSetNewCard,
 }: BackCardProps) => {
   const [backText, setBackText] = useState("");
+  const focusRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (focusRef.current) {
+      focusRef.current.focus();
+    }
+  }, []);
+
   const addNewFlashCard = async (front: string, back: string) => {
     const newFlashCard: NewFlashCardType = {
       front: front,
@@ -52,6 +60,7 @@ export const AddNewBackCard = ({
         type="text"
         placeholder="Type word.."
         onChange={(e) => setBackText(e.target.value)}
+        ref={focusRef}
       />
       <StyledButtonsContainer>
         <StyledCardButton onClick={() => onFlipCard()}>Back</StyledCardButton>

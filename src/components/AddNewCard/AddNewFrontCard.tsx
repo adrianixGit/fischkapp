@@ -2,6 +2,7 @@ import { StyledInput } from "../styles/AddNewCard.styled";
 import { StyledCardButton } from "../styles/buttons/CardButton";
 import { StyledCardContent } from "../styles/CardGlobal.styled";
 import { StyledButtonsContainer } from "../styles/AddNewCard.styled";
+import { useEffect, useRef } from "react";
 
 type FrontCardProps = {
   onFlipCard: () => void;
@@ -16,6 +17,14 @@ export const AddNewFrontCard = ({
   onSetFrontText,
   frontText,
 }: FrontCardProps) => {
+  const focusRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (focusRef.current) {
+      focusRef.current.focus();
+    }
+  }, []);
+
   return (
     <StyledCardContent>
       <StyledInput
@@ -23,6 +32,7 @@ export const AddNewFrontCard = ({
         placeholder="Type word.."
         value={frontText}
         onChange={(e) => onSetFrontText(e.target.value)}
+        ref={focusRef}
       />
       <StyledButtonsContainer>
         <StyledCardButton onClick={() => onSetNewCard(false)}>

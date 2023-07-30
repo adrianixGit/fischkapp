@@ -34,8 +34,8 @@ export const StyledCard = styled.div<StyledCardPropType>`
   margin: 1vh auto;
   display: flex;
   width: 95%;
-  min-height: 20vh;
-  max-height: 20vh;
+  min-height: 22vh;
+  max-height: 22vh;
   background-color: ${({ theme }) => theme.colors.white};
   background-color: transparent;
   border-radius: 16px;
