@@ -68,7 +68,7 @@ export const StyledTextContainer = styled.div<StyledTextContainerType>`
   display: flex;
   justify-content: center;
   align-items: ${({ textLength }) =>
-    textLength && textLength > 400 ? "flex-start" : "center"};
+    textLength && textLength > 250 ? "flex-start" : "center"};
   text-align: center;
   overflow-y: auto;
 `;
